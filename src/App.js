@@ -1,8 +1,20 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
+
+const DRIVERS_QUERY = gql`
+  query {
+    drivers {
+      firstname
+      lastname
+    }
+  }
+`;
 
 function App() {
+  const { loading, error, data } = useQuery(DRIVERS_QUERY);
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +30,9 @@ function App() {
         >
           Learn React
         </a>
+        <div>loading: {loading}</div>
+        <div>error: {error && error.message}</div>
+        <div>drivers: {data && data.drivers.map(driver => <div>{driver.firstname} {driver.lastname}</div>)}</div>
       </header>
     </div>
   );
