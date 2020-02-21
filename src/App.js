@@ -1,41 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
+import React from "react";
+import "./App.css";
+import styled from "styled-components";
 
-const DRIVERS_QUERY = gql`
-  query {
-    drivers {
-      firstname
-      lastname
-    }
-  }
+const StyledLine = styled.div`
+  color: ${props => props.color || props.theme.fn};
+  background: ${props => props.background || props.theme.bg};
+  font-weight: ${props => (props.bold ? "bold" : "normal")};
+  padding: 15px;
+  text-align: center;
 `;
 
 function App() {
-  const { loading, error, data } = useQuery(DRIVERS_QUERY);
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <div>loading: {loading}</div>
-        <div>error: {error && error.message}</div>
-        <div>drivers: {data && data.drivers.map(driver => <div>{driver.firstname} {driver.lastname}</div>)}</div>
-      </header>
-    </div>
-  );
+  return <StyledLine>Visual primitives for the component age.</StyledLine>;
 }
 
 export default App;
