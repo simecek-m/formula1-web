@@ -1,7 +1,7 @@
 import React from "react";
 
 function Home() {
-  return <div>HOME</div>;
+  return <div className="animated fadeIn">HOME</div>;
 }
 
 export default Home;

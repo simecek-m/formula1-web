@@ -1,7 +1,7 @@
 import React from "react";
 
 function NotFound() {
-  return <div>404 - NOT FOUND</div>;
+  return <div className="animated fadeIn">404 - NOT FOUND</div>;
 }
 
 export default NotFound;
