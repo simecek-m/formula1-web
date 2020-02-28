@@ -7,6 +7,7 @@ const StyledHeader = styled.div`
   background: ${props => props.theme.bg};
   padding: 15px;
   text-align: center;
+  height: 30px;
 `;
 
 function Header() {
