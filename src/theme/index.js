@@ -1,6 +1,7 @@
 const theme = {
-  fg: "white",
-  bg: "black"
+  fg: "#ededed",
+  bg: "#242020",
+  contrast: "#383838"
 };
 
 export default theme;
