@@ -7,6 +7,7 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
 import { ThemeProvider } from "styled-components";
 import theme from "theme";
+import "i18n";
 
 const apolloClient = new ApolloClient({
   uri: "http://localhost:8080/graphql"

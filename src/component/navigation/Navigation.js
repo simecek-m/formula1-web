@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import NavigationItem from "component/navigation/NavigationItem";
+import { useTranslation } from "react-i18next";
 
 const StyledHeader = styled.div`
   color: ${props => props.theme.fg};
@@ -11,10 +12,12 @@ const StyledHeader = styled.div`
 `;
 
 function Header() {
+  const { t } = useTranslation("navigation");
   return (
     <StyledHeader>
-      <NavigationItem to="/">Home</NavigationItem>
-      <NavigationItem to="/about">About</NavigationItem>
+      <NavigationItem to="/">{t("drivers")}</NavigationItem>
+      <NavigationItem to="/teams">{t("teams")}</NavigationItem>
+      <NavigationItem to="/season">{t("season")}</NavigationItem>
     </StyledHeader>
   );
 }
