@@ -22,15 +22,15 @@ const VETTEL = {
   teamColor: "red"
 };
 
-const StyledHomePage = styled.div`
+const StyledDriversPage = styled.div`
   background: ${props => props.theme.contrast};
   min-height: calc(100vh - 60px);
   text-align: center;
 `;
 
-function Home() {
+function Drivers() {
   return (
-    <StyledHomePage className="animated fadeIn">
+    <StyledDriversPage className="animated fadeIn">
       <DriverCard
         driver={HAMILTON}
         onClick={() => console.log("clicked on hamilton")}
@@ -39,8 +39,8 @@ function Home() {
         driver={VETTEL}
         onClick={() => console.log("clicked on vettel")}
       />
-    </StyledHomePage>
+    </StyledDriversPage>
   );
 }
 
-export default Home;
+export default Drivers;
