@@ -14,7 +14,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
-        <Route path="/404" component={NotFound} />
+        <Route path={["/404", "*"]} component={NotFound} />
       </Switch>
     </BrowserRouter>
   );
