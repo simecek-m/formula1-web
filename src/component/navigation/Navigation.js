@@ -3,7 +3,7 @@ import styled from "styled-components";
 import NavigationItem from "component/navigation/NavigationItem";
 import { useTranslation } from "react-i18next";
 
-const StyledHeader = styled.div`
+const StyledNavigation = styled.div`
   color: ${props => props.theme.fg};
   background: ${props => props.theme.bg};
   padding: 15px;
@@ -11,15 +11,15 @@ const StyledHeader = styled.div`
   height: 30px;
 `;
 
-function Header() {
+function Navigation() {
   const { t } = useTranslation("navigation");
   return (
-    <StyledHeader>
+    <StyledNavigation>
       <NavigationItem to="/">{t("drivers")}</NavigationItem>
       <NavigationItem to="/teams">{t("teams")}</NavigationItem>
       <NavigationItem to="/season">{t("season")}</NavigationItem>
-    </StyledHeader>
+    </StyledNavigation>
   );
 }
 
-export default Header;
+export default Navigation;
