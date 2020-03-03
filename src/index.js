@@ -8,9 +8,10 @@ import ApolloClient from "apollo-boost";
 import { ThemeProvider } from "styled-components";
 import theme from "theme";
 import "i18n";
+import { SERVER_HOST, SERVER_PORT } from "constant";
 
 const apolloClient = new ApolloClient({
-  uri: "http://localhost:8080/graphql"
+  uri: `${SERVER_HOST}:${SERVER_PORT}/graphql`
 });
 
 ReactDOM.render(
