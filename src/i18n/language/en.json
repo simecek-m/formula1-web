@@ -3,5 +3,9 @@
     "drivers": "Drivers",
     "teams": "Teams",
     "season": "Season"
+  },
+  "notFound": {
+    "pageNotFound": "Page was not found!",
+    "home": " Home"
   }
 }

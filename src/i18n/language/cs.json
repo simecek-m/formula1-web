@@ -3,5 +3,9 @@
     "drivers": "Jezdci",
     "teams": "Týmy",
     "season": "Sezóna"
+  },
+  "notFound": {
+    "pageNotFound": "Stránka nebyla nalezena!",
+    "home": "Domů"
   }
 }
