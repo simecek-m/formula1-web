@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledDriverCard = styled.div`
-  padding: 15px;
+  text-align: center;
+  padding: 5px;
   display: inline-block;
   margin: 20px;
   background: ${props => props.theme.bg};
@@ -14,29 +15,31 @@ const StyledDriverCard = styled.div`
     transform: scale(1.05);
   }
   position: relative;
-  border-radius: 15px 15px 0 0;
 `;
 
 const Avatar = styled.img`
-  height: 250px;
-  width: 250px;
+  height: 270px;
+  width: 270px;
   object-fit: cover;
-  border-radius: 15px 15px 0 0;
 `;
 
-const PositionWrapper = styled.div`
-  text-align: center;
+const NumberWrapper = styled.div`
   position: absolute;
   bottom: 70px;
-  width: 250px;
+  width: 100%;
 `;
 
-const Position = styled.span`
+const Number = styled.span`
   color: ${props => props.theme.fg};
-  font-size: 38px;
+  font-size: 30px;
   background: ${props => props.theme.bg};
-  padding: 10px 20px 0px 20px;
   border-radius: 50px 50px 0 0;
+  display: inline-block;
+  width: 80px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  vertical-align: middle;
 `;
 
 const Name = styled.div`
@@ -48,6 +51,7 @@ const Name = styled.div`
 const Team = styled.div`
   color: ${props => props.theme.fg};
   font-size: 18px;
+  margin-bottom: 10px;
 `;
 
 function DriverCard({ driver = {}, onClick }) {
@@ -62,9 +66,9 @@ function DriverCard({ driver = {}, onClick }) {
   return (
     <StyledDriverCard teamColor={teamColor} onClick={onClick}>
       <Avatar src={picture} />
-      <PositionWrapper>
-        <Position>{position}</Position>
-      </PositionWrapper>
+      <NumberWrapper>
+        <Number>{position}</Number>
+      </NumberWrapper>
       <Name>
         {firstname} {lastname}
       </Name>
