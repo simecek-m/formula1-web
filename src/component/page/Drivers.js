@@ -1,45 +1,55 @@
 import React from "react";
 import DriverCard from "component/card/DriverCard";
 import styled from "styled-components";
-
-const HAMILTON = {
-  firstname: "Lewis",
-  lastname: "Hamilton",
-  team: "Mercedes",
-  position: 1,
-  picture:
-    "https://cdn-8.motorsport.com/images/mgl/24vRALz6/s9/lewis-hamilton-mercedes-amg-f1-1.jpg",
-  teamColor: "cyan"
-};
-
-const VETTEL = {
-  firstname: "Sebastian",
-  lastname: "Vettel",
-  team: "Ferrari",
-  position: 2,
-  picture:
-    "https://www.fia.com/sites/default/files/styles/content_details/public/news/main_image/img91.jpg?itok=GwGhAzi9",
-  teamColor: "red"
-};
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import { SERVER_HOST, SERVER_PORT } from "constant";
 
 const StyledDriversPage = styled.div`
-  background: ${props => props.theme.contrast};
-  min-height: calc(100vh - 60px);
+  max-width: 70%;
+  margin: 0 auto;
   text-align: center;
 `;
 
+const DRIVERS_QUERY = gql`
+  query {
+    drivers {
+      firstname
+      lastname
+      picture
+      number
+      team {
+        name
+        color
+      }
+    }
+  }
+`;
+
 function Drivers() {
+  const { data } = useQuery(DRIVERS_QUERY);
+  let drivers = [];
+  if (data) {
+    drivers = data.drivers.map((driver, index) => {
+      const cardData = {
+        firstname: driver.firstname,
+        lastname: driver.lastname,
+        position: driver.number,
+        picture: `${SERVER_HOST}:${SERVER_PORT}${driver.picture}`,
+        team: driver.team.name,
+        teamColor: driver.team.color
+      };
+      return (
+        <DriverCard
+          key={index}
+          driver={cardData}
+          onClick={() => console.log(driver.lastname)}
+        />
+      );
+    });
+  }
   return (
-    <StyledDriversPage className="animated fadeIn">
-      <DriverCard
-        driver={HAMILTON}
-        onClick={() => console.log("clicked on hamilton")}
-      />
-      <DriverCard
-        driver={VETTEL}
-        onClick={() => console.log("clicked on vettel")}
-      />
-    </StyledDriversPage>
+    <StyledDriversPage className="animated fadeIn">{drivers}</StyledDriversPage>
   );
 }
 
