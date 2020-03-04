@@ -5,6 +5,8 @@ import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { SERVER_HOST, SERVER_PORT } from "constant";
 import { useHistory } from "react-router-dom";
+import Loading from "component/page/Loading";
+import Error from "component/page/Error";
 
 const StyledDriversPage = styled.div`
   max-width: 70%;
@@ -30,7 +32,7 @@ const DRIVERS_QUERY = gql`
 
 function Drivers() {
   const history = useHistory();
-  const { data } = useQuery(DRIVERS_QUERY);
+  const { loading, error, data } = useQuery(DRIVERS_QUERY);
   let drivers = [];
   if (data) {
     drivers = data.drivers.map((driver, index) => {
@@ -51,7 +53,11 @@ function Drivers() {
       );
     });
   }
-  return (
+  return loading ? (
+    <Loading />
+  ) : error ? (
+    <Error />
+  ) : (
     <StyledDriversPage className="animated fadeIn">{drivers}</StyledDriversPage>
   );
 }
