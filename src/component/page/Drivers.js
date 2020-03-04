@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { SERVER_HOST, SERVER_PORT } from "constant";
+import { useHistory } from "react-router-dom";
 
 const StyledDriversPage = styled.div`
   max-width: 70%;
@@ -14,6 +15,7 @@ const StyledDriversPage = styled.div`
 const DRIVERS_QUERY = gql`
   query {
     drivers {
+      _id
       firstname
       lastname
       picture
@@ -27,6 +29,7 @@ const DRIVERS_QUERY = gql`
 `;
 
 function Drivers() {
+  const history = useHistory();
   const { data } = useQuery(DRIVERS_QUERY);
   let drivers = [];
   if (data) {
@@ -43,7 +46,7 @@ function Drivers() {
         <DriverCard
           key={index}
           driver={cardData}
-          onClick={() => console.log(driver.lastname)}
+          onClick={() => history.push(`/drivers/${driver._id}`)}
         />
       );
     });
