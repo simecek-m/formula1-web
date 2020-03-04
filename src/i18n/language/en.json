@@ -7,5 +7,10 @@
   "notFound": {
     "pageNotFound": "Page was not found!",
     "home": " Home"
+  },
+  "error": {
+    "wentWrong": "Something went wrong!",
+    "tryAgainLater": "Try again later...",
+    "repeat": "Repeat"
   }
 }

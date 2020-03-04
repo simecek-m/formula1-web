@@ -7,5 +7,10 @@
   "notFound": {
     "pageNotFound": "Stránka nebyla nalezena!",
     "home": "Domů"
+  },
+  "error": {
+    "wentWrong": "Něco se pokazilo!",
+    "tryAgainLater": "Zkuste to znovu později...",
+    "repeat": "Opakovat"
   }
 }
