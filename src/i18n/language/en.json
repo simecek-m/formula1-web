@@ -8,6 +8,9 @@
     "pageNotFound": "Page was not found!",
     "home": " Home"
   },
+  "loading": {
+    "loading": "Loading..."
+  },
   "error": {
     "wentWrong": "Something went wrong!",
     "tryAgainLater": "Try again later...",

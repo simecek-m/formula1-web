@@ -8,6 +8,9 @@
     "pageNotFound": "Stránka nebyla nalezena!",
     "home": "Domů"
   },
+  "loading": {
+    "loading": "Načítání..."
+  },
   "error": {
     "wentWrong": "Něco se pokazilo!",
     "tryAgainLater": "Zkuste to znovu později...",
