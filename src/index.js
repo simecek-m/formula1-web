@@ -9,6 +9,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "theme";
 import "i18n";
 import { SERVER_HOST, SERVER_PORT } from "constant";
+import NotificationProvider from "notification/provider";
 
 const apolloClient = new ApolloClient({
   uri: `${SERVER_HOST}:${SERVER_PORT}/graphql`
@@ -17,7 +18,9 @@ const apolloClient = new ApolloClient({
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <ApolloProvider client={apolloClient}>
-      <App />
+      <NotificationProvider value={{ title: "notification" }}>
+        <App />
+      </NotificationProvider>
     </ApolloProvider>
   </ThemeProvider>,
   document.getElementById("root")
