@@ -54,15 +54,17 @@ const Team = styled.div`
   margin-bottom: 10px;
 `;
 
-function DriverCard({ driver = {}, onClick }) {
-  const {
+function DriverCard({
+  driver: {
     firstname = "Unknown",
     lastname = "Unknown",
     picture = "/img/avatar.svg",
     team = "Unknown",
     position = 0,
     teamColor = "white"
-  } = driver;
+  },
+  onClick
+}) {
   return (
     <StyledDriverCard teamColor={teamColor} onClick={onClick}>
       <Avatar src={picture} />
