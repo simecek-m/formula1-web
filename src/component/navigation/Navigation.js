@@ -15,7 +15,7 @@ function Navigation() {
   const { t } = useTranslation("navigation");
   return (
     <StyledNavigation>
-      <NavigationItem to="/">{t("drivers")}</NavigationItem>
+      <NavigationItem to="/drivers">{t("drivers")}</NavigationItem>
       <NavigationItem to="/teams">{t("teams")}</NavigationItem>
       <NavigationItem to="/season">{t("season")}</NavigationItem>
     </StyledNavigation>
