@@ -24,6 +24,7 @@ const StyledNotification = styled.div`
 
 const StyledIcon = styled(FontAwesomeIcon)`
   font-size: 48px;
+  min-width: 50px;
   margin: 10px 10px 10px 0;
 `;
 
