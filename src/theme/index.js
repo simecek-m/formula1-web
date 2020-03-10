@@ -2,6 +2,10 @@ const theme = {
   fg: "#ededed",
   bg: "#242020",
   contrast: "#383838",
+  color: {
+    white: "#ffffff",
+    black: "#000000"
+  },
   status: {
     info: "#33a4f5",
     success: "#68F330",
