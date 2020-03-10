@@ -9,7 +9,7 @@ export const DEFAULT_NOTIFICATION = {
   icon: "",
   title: "",
   text: "",
-  color: "black",
+  color: theme.color.black,
   background: theme.status.info,
   timer: DEFAULT_TIMER
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import theme from "theme";
 
 const StyledDriverCard = styled.div`
   text-align: center;
@@ -61,7 +62,7 @@ function DriverCard({
     picture = "/img/avatar.svg",
     team = "Unknown",
     position = 0,
-    teamColor = "white"
+    teamColor = theme.color.white
   },
   onClick
 }) {

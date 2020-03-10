@@ -16,7 +16,7 @@ const StyledButton = styled.button`
   display: block;
   transition: 0.5s ease all;
   :hover {
-    color: ${props => (props.dark ? "white" : "black")};
+    color: ${props => (props.dark ? theme.color.white : theme.color.black)};
     background: ${props => props.color};
   }
 `;

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import NotificationContext from "notification/context";
-import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
+import { faExclamation } from "@fortawesome/free-solid-svg-icons";
+import theme from "theme";
 
 function Home() {
   const notification = useContext(NotificationContext);
@@ -9,12 +10,11 @@ function Home() {
       <button
         onClick={() =>
           notification.show({
-            icon: faMailBulk,
-            title: "Notification",
+            icon: faExclamation,
+            title: "404 Not Found",
             text: "Something went wrong. Try again later.",
-            color: "black",
-            background: "lightblue",
-            onClick: () => console.log("click on notification")
+            color: theme.color.white,
+            background: theme.status.danger
           })
         }
       >
