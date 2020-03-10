@@ -16,6 +16,7 @@ const StyledNotification = styled.div`
   max-height: 300px;
   overflow: hidden;
   user-select: none;
+  box-shadow: 2px 2px 2px black;
   transition: 0.3s ease all;
   &:hover {
     transform: scale(1.02);
