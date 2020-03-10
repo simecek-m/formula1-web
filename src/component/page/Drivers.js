@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import DriverCard from "component/card/DriverCard";
 import styled from "styled-components";
 import { useQuery } from "@apollo/react-hooks";
@@ -7,6 +7,9 @@ import { SERVER_HOST, SERVER_PORT } from "constant";
 import { useHistory } from "react-router-dom";
 import Loading from "component/page/Loading";
 import Error from "component/page/Error";
+import NotificationContext from "notification/context";
+import theme from "theme";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
 const StyledDriversPage = styled.div`
   max-width: 70%;
@@ -31,34 +34,48 @@ const DRIVERS_QUERY = gql`
 `;
 
 function Drivers() {
-  const history = useHistory();
+  const history = useRef(useHistory());
   const { loading, error, data } = useQuery(DRIVERS_QUERY);
-  let drivers = [];
-  if (data) {
-    drivers = data.drivers.map((driver, index) => {
-      const cardData = {
-        firstname: driver.firstname,
-        lastname: driver.lastname,
-        position: driver.number,
-        picture: `${SERVER_HOST}:${SERVER_PORT}${driver.picture}`,
-        team: driver.team.name,
-        teamColor: driver.team.color
-      };
-      return (
-        <DriverCard
-          key={index}
-          driver={cardData}
-          onClick={() => history.push(`/drivers/${driver._id}`)}
-        />
-      );
-    });
-  }
+  const notification = useRef(useContext(NotificationContext));
+  const [driverCards, setDriverCards] = useState([]);
+  useEffect(() => {
+    if (error) {
+      notification.current.show({
+        icon: faExclamationCircle,
+        title: "API Error",
+        text: error.message,
+        color: theme.color.white,
+        background: theme.status.danger
+      });
+    } else if (data) {
+      const elements = data.drivers.map((driver, index) => {
+        const cardData = {
+          firstname: driver.firstname,
+          lastname: driver.lastname,
+          position: driver.number,
+          picture: `${SERVER_HOST}:${SERVER_PORT}${driver.picture}`,
+          team: driver.team.name,
+          teamColor: driver.team.color
+        };
+        return (
+          <DriverCard
+            key={index}
+            driver={cardData}
+            onClick={() => history.current.push(`/drivers/${driver._id}`)}
+          />
+        );
+      });
+      setDriverCards(elements);
+    }
+  }, [error, data]);
   return loading ? (
     <Loading />
   ) : error ? (
     <Error />
   ) : (
-    <StyledDriversPage className="animated fadeIn">{drivers}</StyledDriversPage>
+    <StyledDriversPage className="animated fadeIn">
+      {driverCards}
+    </StyledDriversPage>
   );
 }
 
