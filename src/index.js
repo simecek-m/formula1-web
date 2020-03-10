@@ -18,7 +18,7 @@ const apolloClient = new ApolloClient({
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <ApolloProvider client={apolloClient}>
-      <NotificationProvider value={{ title: "notification" }}>
+      <NotificationProvider value={{}}>
         <App />
       </NotificationProvider>
     </ApolloProvider>
