@@ -9,6 +9,9 @@ const StyledNavigation = styled.div`
   padding: 15px;
   text-align: center;
   height: 30px;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 5px 10px 0 ${props => props.theme.bg};
 `;
 
 function Navigation() {

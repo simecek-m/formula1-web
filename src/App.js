@@ -16,17 +16,23 @@ const StyledApp = styled.div`
   min-height: 100vh;
 `;
 
+const StyledRoutes = styled.div`
+  padding-top: 80px;
+`;
+
 function App() {
   return (
     <StyledApp>
       <BrowserRouter>
         <Navigation />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/drivers" component={Drivers} />
-          <Route path="/drivers/:id" component={Driver} />
-          <Route path={["/404", "*"]} component={NotFound} />
-        </Switch>
+        <StyledRoutes>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/drivers" component={Drivers} />
+            <Route path="/drivers/:id" component={Driver} />
+            <Route path={["/404", "*"]} component={NotFound} />
+          </Switch>
+        </StyledRoutes>
       </BrowserRouter>
       <Notification />
     </StyledApp>
