@@ -15,5 +15,14 @@
     "wentWrong": "Something went wrong!",
     "tryAgainLater": "Try again later...",
     "repeat": "Repeat"
+  },
+  "driver": {
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "born": "Born",
+    "height": "Height",
+    "number": "Number",
+    "points": "Points",
+    "team": "Team"
   }
 }

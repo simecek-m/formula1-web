@@ -15,5 +15,14 @@
     "wentWrong": "Něco se pokazilo!",
     "tryAgainLater": "Zkuste to znovu později...",
     "repeat": "Opakovat"
+  },
+  "driver": {
+    "firstname": "Jméno",
+    "lastname": "Přijmení",
+    "born": "Narození",
+    "height": "Výška",
+    "number": "Číslo",
+    "points": "Body",
+    "team": "Tým"
   }
 }
