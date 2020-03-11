@@ -34,10 +34,12 @@ const DRIVERS_QUERY = gql`
 `;
 
 function Drivers() {
-  const history = useRef(useHistory());
-  const { loading, error, data } = useQuery(DRIVERS_QUERY);
+  const history = useHistory();
+  const { loading, error, data } = useQuery(DRIVERS_QUERY, {
+    fetchPolicy: "no-cache"
+  });
+  const [drivers, setDrivers] = useState([]);
   const notification = useRef(useContext(NotificationContext));
-  const [driverCards, setDriverCards] = useState([]);
   useEffect(() => {
     if (error) {
       notification.current.show({
@@ -48,24 +50,11 @@ function Drivers() {
         background: theme.status.danger
       });
     } else if (data) {
-      const elements = data.drivers.map((driver, index) => {
-        const cardData = {
-          firstname: driver.firstname,
-          lastname: driver.lastname,
-          position: driver.number,
-          picture: `${SERVER_HOST}:${SERVER_PORT}${driver.picture}`,
-          team: driver.team.name,
-          teamColor: driver.team.color
-        };
-        return (
-          <DriverCard
-            key={index}
-            driver={cardData}
-            onClick={() => history.current.push(`/drivers/${driver._id}`)}
-          />
-        );
+      const drivers = data.drivers.map(driver => {
+        driver.picture = `${SERVER_HOST}:${SERVER_PORT}${driver.picture}`;
+        return driver;
       });
-      setDriverCards(elements);
+      setDrivers(drivers);
     }
   }, [error, data]);
   return loading ? (
@@ -74,7 +63,15 @@ function Drivers() {
     <Error />
   ) : (
     <StyledDriversPage className="animated fadeIn">
-      {driverCards}
+      {drivers.map((driver, index) => {
+        return (
+          <DriverCard
+            key={index}
+            driver={driver}
+            onClick={() => history.push(`/drivers/${driver._id}`)}
+          />
+        );
+      })}
     </StyledDriversPage>
   );
 }

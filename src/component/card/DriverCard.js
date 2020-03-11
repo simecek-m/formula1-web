@@ -60,17 +60,16 @@ function DriverCard({
     firstname = "Unknown",
     lastname = "Unknown",
     picture = "/img/avatar.svg",
-    team = "Unknown",
-    position = 0,
-    teamColor = theme.color.white
-  },
+    number = 0,
+    team: { color = theme.color.white, name: team = "Unknown" } = {}
+  } = {},
   onClick
 }) {
   return (
-    <StyledDriverCard teamColor={teamColor} onClick={onClick}>
+    <StyledDriverCard teamColor={color} onClick={onClick}>
       <Avatar src={picture} />
       <NumberWrapper>
-        <Number>{position}</Number>
+        <Number>{number}</Number>
       </NumberWrapper>
       <Name>
         {firstname} {lastname}
