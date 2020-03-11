@@ -1,7 +1,7 @@
 const theme = {
   fg: "#ededed",
-  bg: "#242020",
-  contrast: "#383838",
+  bg: "#0f0f0f",
+  contrast: "#1c1c1c",
   color: {
     white: "#ffffff",
     black: "#000000"
