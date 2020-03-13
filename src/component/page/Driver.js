@@ -10,6 +10,8 @@ import NotificationContext from "notification/context";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import theme from "theme";
 import { useTranslation } from "react-i18next";
+import { contrastOf } from "helper/colors";
+import Links from "component/navigation/Links";
 
 const DRIVER_QUERY = gql`
   query($id: String!) {
@@ -22,6 +24,11 @@ const DRIVER_QUERY = gql`
       points
       number
       picture
+      links {
+        web
+        instagram
+        facebook
+      }
       team {
         name
         color
@@ -59,6 +66,12 @@ const Description = styled.div`
   margin: 50px;
 `;
 
+const Name = styled.div`
+  color: ${props => props.color};
+  font-size: 36px;
+  font-weight: bold;
+`;
+
 const Row = styled.div`
   margin: 10px 0;
   font-size: 20px;
@@ -72,6 +85,21 @@ const Property = styled.div`
 const Value = styled.div`
   display: inline-block;
   font-weight: bold;
+`;
+
+const TeamSection = styled.div`
+  padding: 50px;
+  display: flex;
+  min-height: calc(100vh - 160px);
+  justify-content: center;
+  align-items: center;
+  background: ${props => props.background};
+  color: ${props => props.color};
+`;
+
+const Header = styled.div`
+  font-weight: bold;
+  font-size: 36px;
 `;
 
 function Driver() {
@@ -95,7 +123,11 @@ function Driver() {
       setDriver(data.driver);
     }
   }, [error, data]);
-  const { team: { color = theme.color.white, name: team } = {} } = driver;
+  const {
+    links: { web, instagram, facebook } = {},
+    team: { color = theme.color.white, name: team } = {}
+  } = driver;
+  const contrastColor = contrastOf(color);
   return loading ? (
     <Loading />
   ) : error ? (
@@ -108,14 +140,7 @@ function Driver() {
           color={color}
         />
         <Description color={color}>
-          <Row>
-            <Property>{t("firstname")}</Property>
-            <Value>{driver.firstname}</Value>
-          </Row>
-          <Row>
-            <Property>{t("lastname")}</Property>
-            <Value>{driver.lastname}</Value>
-          </Row>
+          <Name color={color}>{driver.firstname} {driver.lastname}</Name>
           <Row>
             <Property>{t("born")}</Property>
             <Value>{driver.birthday}</Value>
@@ -140,8 +165,12 @@ function Driver() {
             <Property>{t("team")}</Property>
             <Value>{team}</Value>
           </Row>
+          <Links color={color} web={web} instagram={instagram} facebook={facebook} />
         </Description>
       </DriverSection>
+      <TeamSection color={contrastColor} background={color}>
+        <Header>{team}</Header>
+      </TeamSection>
     </StyledDriverDetail>
   );
 }
