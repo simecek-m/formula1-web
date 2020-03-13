@@ -6,37 +6,64 @@ import {
   faFacebookSquare
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import theme from "theme";
 
 const StyledLinks = styled.div`
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   font-size: 24px;
   padding: 5px 10px;
+  width: 100%;
+  margin: 10px;
+`;
+
+const LinkText = styled.div`
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.5s;
+  font-size: 16px;
+  text-align: center;
+`;
+
+const StyledIcon = styled(FontAwesomeIcon)`
+  margin: 10px auto;
 `;
 
 const StyledLink = styled.a`
+  text-decoration: none;
   color: ${props => props.theme.fg};
-  opacity: 0.7;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.5;
   transition: 0.5s ease all;
-  margin: 5px 10px;
+  flex-basis: 60px;
   :hover {
     opacity: 1;
+    color: ${props => props.color};
+    ${LinkText} {
+      opacity: 1;
+    }
   }
 `;
 
-function Links({ className, web, instagram, facebook }) {
+function Links({ className, color = theme.fg ,web, instagram, facebook }) {
   const webLink = web ? (
-    <StyledLink href={web} target="_blank">
-      <FontAwesomeIcon icon={faGlobeEurope} />
+    <StyledLink color={color} href={web} target="_blank">
+      <LinkText>Web</LinkText>
+      <StyledIcon icon={faGlobeEurope} />
     </StyledLink>
   ) : null;
   const instagramLink = instagram ? (
-    <StyledLink href={instagram} target="_blank">
-      <FontAwesomeIcon icon={faInstagramSquare} />
+    <StyledLink color={color} href={instagram} target="_blank">
+      <LinkText>Instagram</LinkText>
+      <StyledIcon icon={faInstagramSquare} />
     </StyledLink>
   ) : null;
   const facebookLink = facebook ? (
-    <StyledLink href={facebook} target="_blank">
-      <FontAwesomeIcon icon={faFacebookSquare} />
+    <StyledLink color={color} href={facebook} target="_blank">
+      <LinkText>Facebook</LinkText>
+      <StyledIcon icon={faFacebookSquare} />
     </StyledLink>
   ) : null;
   return (
