@@ -1,27 +1,24 @@
-import React, { useContext } from "react";
-import NotificationContext from "notification/context";
-import { faExclamation } from "@fortawesome/free-solid-svg-icons";
-import theme from "theme";
+import React from "react";
+import styled from "styled-components";
+
+const StyledHomePage = styled.div`
+  margin: 0 auto;
+  text-align: center;
+  background-image: url("/img/background.png");
+  height: 100vh;
+`;
+
+const StyledCarImage = styled.img`
+  height: 80vh;
+  margin-top: 10vh;
+
+`;
 
 function Home() {
-  const notification = useContext(NotificationContext);
   return (
-    <div>
-      <button
-        onClick={() =>
-          notification.show({
-            icon: faExclamation,
-            title: "404 Not Found",
-            text: "Something went wrong. Try again later.",
-            color: theme.color.white,
-            background: theme.status.danger
-          })
-        }
-      >
-        show
-      </button>
-      <button onClick={() => notification.hide()}>hide</button>
-    </div>
+    <StyledHomePage>
+      <StyledCarImage src="/img/car.png" alt="logo-car"/>
+    </StyledHomePage>
   );
 }
 

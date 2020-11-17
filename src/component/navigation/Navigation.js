@@ -4,14 +4,13 @@ import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 
 const StyledNavigation = styled.div`
-  color: ${props => props.theme.fg};
   background: ${props => props.theme.bg};
+  color: ${props => props.theme.fg};
   padding: 15px;
   text-align: center;
   height: 30px;
   position: fixed;
   width: 100%;
-  box-shadow: 0 5px 10px 0 ${props => props.theme.bg};
 `;
 
 const NavigationItem = styled(NavLink)`
