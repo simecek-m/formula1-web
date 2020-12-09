@@ -6,8 +6,11 @@ import { faRedoAlt } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 
 const StyledError = styled.div`
-  margin-top: 30vh;
-  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const MainText = styled.div`

@@ -9,8 +9,11 @@ import theme from "theme";
 import { useHistory } from "react-router-dom";
 
 const StyledNotFound = styled.div`
-  text-align: center;
-  margin-top: 25vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`

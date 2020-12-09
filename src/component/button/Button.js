@@ -30,7 +30,7 @@ function Button({
   children,
   color = theme.fg,
   size = "22px",
-  dark = false,
+  dark = true,
   onClick
 }) {
   const buttonIcon = icon ? <StyledIcon icon={icon} /> : null;
